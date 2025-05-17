@@ -14,16 +14,16 @@
         <img src="https://placehold.co/700x944" class="size-max rounded-l-[48px]">
 
         <section class="flex flex-col py-3">
-            <form action="/login" method="POST" class="w-[462px] flex-1 flex flex-col justify-center gap-7">
-                @csrf
-
-                <div class="flex justify-between">
-                    <div>
-                        <h1 class="text-[32px] font-bold">Welcome Back!</h1>
-                        <h6 class="text-gray-600">Please enter your details</h6>
+            <x-forms.form>
+                <x-slot:header>
+                    <div class="flex justify-between">
+                        <div>
+                            <h1>Welcome Back!</h1>
+                            <h6 class="text-base font-normal text-gray-600">Please enter your details</h6>
+                        </div>
+                        <img src="{{ asset('svg/smile.svg') }}" alt="Smile icon" class="w-15 h-12 mt-2">
                     </div>
-                    <img src="{{ asset('svg/smile.svg') }}" alt="Smile icon" class="w-15 h-12 mt-2">
-                </div>
+                </x-slot:header>
 
                 <x-forms.input-field type="email" name="email" placeholder="Write your e-mail" required>
                     E-mail
@@ -36,7 +36,7 @@
 
                 <x-forms.submit-btn>Log In</x-forms.submit-btn>
 
-            </form>
+            </x-forms.form>
 
             <footer class="flex justify-center gap-4">
                 <p>English</p>
