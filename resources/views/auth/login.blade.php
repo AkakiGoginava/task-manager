@@ -34,10 +34,7 @@
                     Password
                 </x-forms.input-field>
 
-                <button type="submit"
-                    class="w-full h-17 bg-blue-400 text-white font-bold rounded-xl transition 
-                        duration-200 hover:bg-blue-300 hover:cursor-pointer">
-                    Log In</button>
+                <x-forms.submit-btn>Log In</x-forms.submit-btn>
 
             </form>
 
