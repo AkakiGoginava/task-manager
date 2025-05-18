@@ -28,6 +28,13 @@ class AuthController extends Controller
 
 		request()->session()->regenerate();
 
+		return redirect('/tasks');
+	}
+
+	public function logout()
+	{
+		Auth::logout();
+
 		return redirect('/');
 	}
 }
