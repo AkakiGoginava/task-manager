@@ -14,7 +14,7 @@
         <img src="https://placehold.co/700x944" class="size-max rounded-l-[3rem]">
 
         <section class="flex flex-col py-3">
-            <x-forms.form action="/login">
+            <x-forms.form action="{{ route('login') }}">
                 <x-slot:header>
                     <div class="flex justify-between">
                         <div>
@@ -25,7 +25,8 @@
                     </div>
                 </x-slot:header>
 
-                <x-forms.input-field type="email" name="email" placeholder="Write your e-mail" required>
+                <x-forms.input-field type="email" name="email" placeholder="Write your e-mail"
+                    value="{{ old('email') }}" required>
                     E-mail
                 </x-forms.input-field>
 
