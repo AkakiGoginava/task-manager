@@ -5,7 +5,7 @@
         class="w-full h-17 px-3 py-2 relative border border-white rounded-xl
             content-center focus-within:border-blue-600 peer-invalid:border-red-500">
 
-        <input {{ $attributes->merge() }}
+        <input name="{{ $name }}" {{ $attributes->merge() }}
             class="peer absolute top-6 w-full bg-transparent 
                 text-sm px-3 py-2 transition duration-300
                 placeholder-transparent text-gray-800
