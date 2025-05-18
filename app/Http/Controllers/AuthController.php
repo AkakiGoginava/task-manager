@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 
@@ -12,17 +13,9 @@ class AuthController extends Controller
 		return view('auth/login');
 	}
 
-	public function login()
+	public function login(LoginRequest $request)
 	{
-		$attributes = request()->validate([
-			'email'    => ['required', 'email'],
-			'password' => ['required', 'min:4'],
-		], [
-			'email.required'    => 'Enter your email address',
-			'email.email'       => 'Enter a valid email address',
-			'password.required' => 'Enter your password',
-			'password.min'      => 'Password must be at least 4 characters long',
-		]);
+		$attributes = $request->validated(['email', 'password']);
 
 		if (!Auth::attempt($attributes)) {
 			throw ValidationException::withMessages([
