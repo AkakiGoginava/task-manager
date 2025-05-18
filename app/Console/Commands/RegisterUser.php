@@ -32,7 +32,7 @@ class RegisterUser extends Command
 
 			$validator = Validator::make(
 				['email' => $email],
-				['email' => 'required|email|unique:users']
+				['email' => ['required', 'email', 'unique:users']]
 			);
 
 			if ($validator->fails()) {
@@ -45,7 +45,7 @@ class RegisterUser extends Command
 
 			$validator = Validator::make(
 				['password' => $password],
-				['password' => 'required|min:4']
+				['password' => ['required', 'min:4']]
 			);
 
 			if ($validator->fails()) {
