@@ -7,6 +7,11 @@ use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
 {
+	public function showLoginPage()
+	{
+		return view('auth/login');
+	}
+
 	public function login()
 	{
 		$attributes = request()->validate([
@@ -28,7 +33,7 @@ class AuthController extends Controller
 
 		request()->session()->regenerate();
 
-		return redirect('/tasks');
+		return redirect()->route('tasks.index');
 	}
 
 	public function logout()
