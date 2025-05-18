@@ -14,7 +14,7 @@
         <img src="https://placehold.co/700x944" class="size-max rounded-l-[3rem]">
 
         <section class="flex flex-col py-3">
-            <x-forms.form>
+            <x-forms.form action="/login">
                 <x-slot:header>
                     <div class="flex justify-between">
                         <div>
