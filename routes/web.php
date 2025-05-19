@@ -13,6 +13,7 @@ Route::controller(AuthController::class)->group(function () {
 	Route::post('/logout', 'logout')->name('logout');
 });
 
-Route::controller(TaskController::class)->group(function () {
-	Route::get('/tasks', 'index')->middleware('auth')->name('tasks.index');
+Route::middleware('auth')->controller(TaskController::class)->group(function () {
+	Route::get('/tasks', 'index')->name('tasks.index');
+	Route::delete('/tasks/delete/{task}', 'destroy')->name('tasks.destroy');
 });

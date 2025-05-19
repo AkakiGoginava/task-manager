@@ -33,10 +33,12 @@
                         <p class="flex-2 overflow-hidden whitespace-nowrap">{{ $task['title'] }}</p>
                         <p class="flex-3 overflow-hidden whitespace-nowrap">{{ $task['description'] }}</p>
                         <p class="flex-1">{{ $task['created_at']->format('d/m/Y') }}</p>
-                        <p class="flex-1">{{ $task['due_date']->format('d/m/Y') }}</p>
+                        <p class="flex-1 {{ $task['due_date'] < now() ? 'text-red-500' : '' }}">
+                            {{ $task['due_date']->format('d/m/Y') }}</p>
                         <div class="flex gap-7 flex-2 text-gray-900">
-                            <form action="{{ route('logout') }}" method="POST">
+                            <form action="{{ route('tasks.destroy', $task->id) }}" method="POST">
                                 @csrf
+                                @method('DELETE')
                                 <button class="underline hover:cursor-pointer hover:text-gray-700">
                                     Delete
                                 </button>
