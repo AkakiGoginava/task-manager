@@ -51,4 +51,13 @@ class TaskController extends Controller
 
 		return redirect()->route('tasks.index');
 	}
+
+	public function destroyOverdue(Task $task)
+	{
+		$user = Auth::user();
+
+		$user->tasks()->where('due_date', '<', now())->delete();
+
+		return redirect()->route('tasks.index');
+	}
 }

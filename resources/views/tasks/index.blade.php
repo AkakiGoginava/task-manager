@@ -2,7 +2,7 @@
     <section>
         <header class="flex gap-4 p-10">
             <h1 class="font-bold text-[2rem] mr-auto">YOUR TASKS</h1>
-            <form action="" method="post" class="flex justify-center">
+            <form action="{{ route('tasks.destroyOverdue') }}" method="post" class="flex justify-center">
                 @csrf
                 @method('DELETE')
                 <button

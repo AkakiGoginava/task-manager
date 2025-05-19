@@ -16,4 +16,5 @@ Route::controller(AuthController::class)->group(function () {
 Route::middleware('auth')->controller(TaskController::class)->group(function () {
 	Route::get('/tasks', 'index')->name('tasks.index');
 	Route::delete('/tasks/delete/{task}', 'destroy')->name('tasks.destroy');
+	Route::delete('/tasks/delete-overdue', 'destroyOverdue')->name('tasks.destroyOverdue');
 });
