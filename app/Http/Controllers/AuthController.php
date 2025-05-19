@@ -15,7 +15,7 @@ class AuthController extends Controller
 
 	public function login(LoginRequest $request)
 	{
-		$attributes = $request->validated(['email', 'password']);
+		$attributes = $request->validated();
 
 		if (!Auth::attempt($attributes)) {
 			throw ValidationException::withMessages([
