@@ -6,13 +6,21 @@ use App\Http\Requests\StoreTaskRequest;
 use App\Models\Task;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
-	public function index()
+	public function index(Request $request)
 	{
 		$user = Auth::user();
-		$tasks = $user->tasks()->paginate(8);
+
+		$query = $user->tasks();
+
+		if ($request->query('filter') === 'due_tasks') {
+			$query->where('due_date', '<', now());
+		}
+
+		$tasks = $query->paginate(8);
 
 		return view('tasks.index', [
 			'tasks' => $tasks,
