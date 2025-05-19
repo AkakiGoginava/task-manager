@@ -1,4 +1,6 @@
 <x-layout>
+    <x-slot:title>Your Tasks</x-slot:title>
+
     <section>
         <header class="flex gap-4 p-10">
             <h1 class="font-bold text-[2rem] mr-auto">YOUR TASKS</h1>
@@ -46,7 +48,8 @@
                             <a href="" class="underline hover:cursor-pointer hover:text-gray-700">
                                 Edit
                             </a>
-                            <a href="" class="underline hover:cursor-pointer hover:text-gray-700">
+                            <a href="{{ route('tasks.show', $task->id) }}"
+                                class="underline hover:cursor-pointer hover:text-gray-700">
                                 Show
                             </a>
                         </div>
