@@ -104,7 +104,8 @@
                                     Delete
                                 </button>
                             </form>
-                            <a href="" class="underline hover:cursor-pointer hover:text-gray-700">
+                            <a href="{{ route('tasks.edit', $task) }}"
+                                class="underline hover:cursor-pointer hover:text-gray-700">
                                 Edit
                             </a>
                             <a href="{{ route('tasks.show', $task->id) }}"

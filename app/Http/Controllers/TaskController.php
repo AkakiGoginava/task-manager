@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreTaskRequest;
+use App\Http\Requests\UpdateTaskRequest;
 use App\Models\Task;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
@@ -65,6 +66,25 @@ class TaskController extends Controller
 
 	public function edit(Task $task)
 	{
+		Gate::authorize('update', $task);
+
+		return view('tasks.edit', [
+			'task' => $task,
+		]);
+	}
+
+	public function update(UpdateTaskRequest $request, Task $task)
+	{
+		$attributes = $request->validated();
+
+		$task->update([
+			'user_id'     => Auth::user()->id,
+			'title'       => $attributes['title_en'],
+			'description' => $attributes['description_en'],
+			'due_date'    => Carbon::createFromFormat('d/m/Y', $attributes['due_date'])->format('Y-m-d'),
+		]);
+
+		return redirect()->route('tasks.show', $task);
 	}
 
 	public function destroy(Task $task)
@@ -76,7 +96,7 @@ class TaskController extends Controller
 		return redirect()->route('tasks.index', request()->query());
 	}
 
-	public function destroyOverdue(Task $task)
+	public function destroyOverdue()
 	{
 		$user = Auth::user();
 
