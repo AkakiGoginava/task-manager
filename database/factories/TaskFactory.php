@@ -12,8 +12,14 @@ class TaskFactory extends Factory
 		$created_at = fake()->dateTimeBetween('-3 months', 'today');
 
 		return [
-			'title'       => fake()->word(),
-			'description' => fake()->text(300),
+			'title' => [
+				'en' => fake()->word(),
+				'ka' => fake()->word(),
+			],
+			'description' => [
+				'en' => fake()->text(300),
+				'ka' => fake()->text(300),
+			],
 			'created_at'  => $created_at,
 			'due_date'    => fake()->dateTimeBetween($created_at, '+6 months'),
 			'user_id'     => User::inRandomOrder()->first() ?? User::factory(),

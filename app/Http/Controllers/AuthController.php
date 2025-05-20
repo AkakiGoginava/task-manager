@@ -3,17 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginRequest;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
 {
-	public function showLoginPage()
-	{
-		return view('auth/login');
-	}
-
-	public function login(LoginRequest $request)
+	public function login(LoginRequest $request): RedirectResponse
 	{
 		$attributes = $request->validated();
 
@@ -29,7 +25,7 @@ class AuthController extends Controller
 		return redirect()->route('tasks.index');
 	}
 
-	public function logout()
+	public function logout(): RedirectResponse
 	{
 		Auth::logout();
 

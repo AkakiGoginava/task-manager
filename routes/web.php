@@ -8,18 +8,22 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [LandingPageController::class, 'index']);
 
 Route::controller(AuthController::class)->group(function () {
-	Route::get('/login', 'showLoginPage')->middleware('guest')->name('login.index');
+	Route::view('/login', 'auth.login')->middleware('guest')->name('login.index');
 	Route::post('/login', 'login')->name('login');
 	Route::post('/logout', 'logout')->name('logout');
 });
 
-Route::middleware('auth')->controller(TaskController::class)->group(function () {
-	Route::get('/tasks', 'index')->name('tasks.index');
-	Route::get('/tasks/create', 'create')->name('tasks.create');
-	Route::get('/tasks/{task}', 'show')->name('tasks.show');
-	Route::get('/tasks/{task}/edit', 'edit')->name('tasks.edit');
-	Route::post('/tasks/{task}/edit', 'update')->name('tasks.update');
-	Route::post('/tasks/create', 'store')->name('tasks.store');
-	Route::delete('/tasks/delete/{task}', 'destroy')->name('tasks.destroy');
-	Route::delete('/tasks/delete-overdue', 'destroyOverdue')->name('tasks.destroyOverdue');
-});
+Route::middleware('auth')
+	->controller(TaskController::class)
+	->prefix('tasks')
+	->name('tasks.')
+	->group(function () {
+		Route::get('/', 'index')->name('index');
+		Route::view('/create', 'tasks.create')->name('create');
+		Route::get('/{task}', 'show')->name('show');
+		Route::get('/{task}/edit', 'edit')->name('edit');
+		Route::post('/{task}/edit', 'update')->name('update');
+		Route::post('/create', 'store')->name('store');
+		Route::delete('/delete/{task}', 'destroy')->name('destroy');
+		Route::delete('/delete-overdue', 'destroyOverdue')->name('destroyOverdue');
+	});

@@ -8,20 +8,20 @@
                     <h1 class="text-center">CREATE TASK</h1>
                 </x-slot:header>
 
-                <x-forms.input-field type="text" name="title_en" value="{{ old('title_en') }}" placeholder="">
+                <x-forms.input-field type="text" name="title[en]" value="{{ old('title.en') }}" placeholder="">
                     Task name in English
                 </x-forms.input-field>
 
-                <x-forms.input-field type="text" name="title_ka" value="{{ old('title_ka') }}" placeholder="">
+                <x-forms.input-field type="text" name="title[ka]" value="{{ old('title.ka') }}" placeholder="">
                     Task name in Georgian
                 </x-forms.input-field>
 
-                <x-forms.input-field type="textarea" name="description_en" value="{{ old('description_en') }}"
+                <x-forms.input-field type="textarea" name="description[en]" value="{{ old('description.en') }}"
                     placeholder="">
                     Description in English
                 </x-forms.input-field>
 
-                <x-forms.input-field type="textarea" name="description_ka" value="{{ old('description_ka') }}"
+                <x-forms.input-field type="textarea" name="description[ka]" value="{{ old('description.ka') }}"
                     placeholder="">
                     Description in Georgian
                 </x-forms.input-field>

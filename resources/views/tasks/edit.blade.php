@@ -8,20 +8,21 @@
                     <h1 class="text-center">EDIT TASK</h1>
                 </x-slot:header>
 
-                <x-forms.input-field type="text" name="title_en" value="{{ $task['title'] }}" placeholder="">
+                <x-forms.input-field type="text" name="title[en]" value="{{ $task['title']['en'] }}" placeholder="">
                     Task name in English
                 </x-forms.input-field>
 
-                <x-forms.input-field type="text" name="title_ka" value="" placeholder="">
+                <x-forms.input-field type="text" name="title[ka]" value="{{ $task['title']['ka'] }}" placeholder="">
                     Task name in Georgian
                 </x-forms.input-field>
 
-                <x-forms.input-field type="textarea" name="description_en" value="{{ $task['description'] }}"
+                <x-forms.input-field type="textarea" name="description[en]" value="{{ $task['description']['en'] }}"
                     placeholder="">
                     Description in English
                 </x-forms.input-field>
 
-                <x-forms.input-field type="textarea" name="description_ka" value="" placeholder="">
+                <x-forms.input-field type="textarea" name="description[ka]" value="{{ $task['title']['ka'] }}"
+                    placeholder="">
                     Description in Georgian
                 </x-forms.input-field>
 

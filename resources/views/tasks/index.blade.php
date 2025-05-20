@@ -89,8 +89,8 @@
             <div>
                 @foreach ($tasks as $task)
                     <div class="flex w-385 gap-4 text-gray-500 px-10 py-5">
-                        <p class="flex-2 overflow-hidden whitespace-nowrap">{{ $task['title'] }}</p>
-                        <p class="flex-3 overflow-hidden whitespace-nowrap">{{ $task['description'] }}</p>
+                        <p class="flex-2 overflow-hidden whitespace-nowrap">{{ $task['title']['en'] }}</p>
+                        <p class="flex-3 overflow-hidden whitespace-nowrap">{{ $task['description']['en'] }}</p>
                         <p class="flex-1">{{ $task['created_at']->format('d/m/Y') }}</p>
                         <p class="flex-1 {{ $task['due_date'] <= now() ? 'text-red-500' : '' }}">
                             {{ $task['due_date']->format('d/m/Y') }}</p>
