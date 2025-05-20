@@ -20,7 +20,7 @@
                     DELETE OLD TASKS
                 </button>
             </form>
-            <a href=""
+            <a href="{{ route('tasks.create') }}"
                 class="flex justify-center gap-3 items-center text-white font-bold py-3 px-6 
                         rounded-xl transition bg-blue-500 hover:bg-blue-400">
                 <img src="{{ asset('svg/plus-circle.svg') }}" alt="plus icon">
