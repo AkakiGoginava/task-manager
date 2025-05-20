@@ -7,6 +7,7 @@ use App\Models\Task;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 class TaskController extends Controller
 {
@@ -41,6 +42,16 @@ class TaskController extends Controller
 
 	public function store(StoreTaskRequest $request)
 	{
+		$attributes = $request->validated();
+
+		Task::create([
+			'user_id'     => Auth::user()->id,
+			'title'       => $attributes['title_en'],
+			'description' => $attributes['description_en'],
+			'due_date'    => Carbon::createFromFormat('d/m/Y', $attributes['due_date'])->format('Y-m-d'),
+		]);
+
+		return redirect()->route('tasks.index');
 	}
 
 	public function show(Task $task)

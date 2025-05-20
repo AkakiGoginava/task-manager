@@ -3,7 +3,7 @@
 
     <section class="flex justify-center mr-40">
         <div class="flex-none">
-            <x-forms.form>
+            <x-forms.form action="{{ route('tasks.store') }}">
                 <x-slot:header>
                     <h1 class="text-center">CREATE TASK</h1>
                 </x-slot:header>

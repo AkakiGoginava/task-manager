@@ -10,6 +10,8 @@ class Task extends Model
 {
 	use HasFactory;
 
+	protected $guarded = [];
+
 	protected $casts = [
 		'due_date' => 'date',
 	];
