@@ -78,7 +78,6 @@ class TaskController extends Controller
 		$attributes = $request->validated();
 
 		$task->update([
-			'user_id'     => Auth::user()->id,
 			'title'       => $attributes['title_en'],
 			'description' => $attributes['description_en'],
 			'due_date'    => Carbon::createFromFormat('d/m/Y', $attributes['due_date'])->format('Y-m-d'),
