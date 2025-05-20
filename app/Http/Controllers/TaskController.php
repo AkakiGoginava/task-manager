@@ -17,10 +17,17 @@ class TaskController extends Controller
 		$query = $user->tasks();
 
 		if ($request->query('filter') === 'due_tasks') {
-			$query->where('due_date', '<', now());
+			$query->where('due_date', '<=', now());
 		}
 
-		$tasks = $query->paginate(8);
+		$sort = $request->query('sort', 'created_at');
+		$direction = $request->query('direction', 'asc');
+
+		if (in_array($sort, ['due_date', 'created_at']) && in_array($direction, ['asc', 'desc'])) {
+			$query->orderBy($sort, $direction);
+		}
+
+		$tasks = $query->paginate(8)->withQueryString();
 
 		return view('tasks.index', [
 			'tasks' => $tasks,
@@ -54,15 +61,15 @@ class TaskController extends Controller
 
 		$task->delete();
 
-		return redirect()->route('tasks.index');
+		return redirect()->route('tasks.index', request()->query());
 	}
 
 	public function destroyOverdue(Task $task)
 	{
 		$user = Auth::user();
 
-		$user->tasks()->where('due_date', '<', now())->delete();
+		$user->tasks()->where('due_date', '<=', now())->delete();
 
-		return redirect()->route('tasks.index');
+		return redirect()->route('tasks.index', request()->query());
 	}
 }
