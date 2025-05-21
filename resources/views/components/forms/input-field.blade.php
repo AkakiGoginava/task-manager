@@ -33,7 +33,11 @@
         </label>
     </div>
 
-    @error($name)
+    @php
+        $errorKey = str_replace(['[', ']'], ['.', ''], $name);
+    @endphp
+
+    @error($errorKey)
         <p class="pl-6 mt-1 text-xs text-red-500">{{ $message }}</p>
     @enderror
 </div>

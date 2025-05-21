@@ -17,7 +17,8 @@
             </a>
         </li>
         <li>
-            <a class="flex items-center gap-2 transition duration-300 hover:text-neutral-500" href="">
+            <a class="flex items-center gap-2 transition duration-300 hover:text-neutral-500"
+                href="{{ route('profile.index') }}">
                 <img src="{{ asset('svg/profileIcon.svg') }}" alt="profile icon">
                 Profile
             </a>

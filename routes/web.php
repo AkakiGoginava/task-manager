@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LandingPageController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Route;
 
@@ -27,3 +28,7 @@ Route::middleware('auth')
 		Route::delete('/delete/{task}', 'destroy')->name('destroy');
 		Route::delete('/delete-overdue', 'destroyOverdue')->name('destroyOverdue');
 	});
+
+Route::middleware('auth')->controller(ProfileController::class)->group(function () {
+	Route::get('/profile', 'index')->name('profile.index');
+});
