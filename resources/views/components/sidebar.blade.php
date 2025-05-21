@@ -10,7 +10,8 @@
             </a>
         </li>
         <li>
-            <a class="flex items-center gap-2 transition duration-300 hover:text-neutral-500" href="">
+            <a class="flex items-center gap-2 transition duration-300 hover:text-neutral-500"
+                href=" {{ route('tasks.index', ['filter' => 'due_tasks']) }}">
                 <img src="{{ asset('svg/hourglass.svg') }}" alt="hourglass icon">
                 Due tasks
             </a>

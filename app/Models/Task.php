@@ -10,8 +10,12 @@ class Task extends Model
 {
 	use HasFactory;
 
+	protected $guarded = [];
+
 	protected $casts = [
-		'due_date' => 'date',
+		'due_date'    => 'date',
+		'title'       => 'array',
+		'description' => 'array',
 	];
 
 	public function user(): BelongsTo
