@@ -1,6 +1,6 @@
 <nav class="flex flex-col items-center h-full w-42 py-4 pl-5">
-    <img class="w-16 h-16 rounded-4xl mb-32"
-        src="{{ Auth::user()->profile_picture ? asset('storage/' . Auth::user()->profile_picture) : asset('images/default_profile.png') }}"
+    <img class="size-16 rounded-full mb-32 object-cover flex-shrink-0"
+        src="{{ Auth::user()->profile_image ? asset('storage/' . Auth::user()->profile_image) : asset('images/default_profile.png') }}"
         alt="profile picture">
 
     <ul class="flex flex-col h-full gap-7 text-lg">

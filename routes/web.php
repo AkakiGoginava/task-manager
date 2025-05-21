@@ -31,4 +31,5 @@ Route::middleware('auth')
 
 Route::middleware('auth')->controller(ProfileController::class)->group(function () {
 	Route::get('/profile', 'index')->name('profile.index');
+	Route::put('/profile', 'update')->name('profile.update');
 });

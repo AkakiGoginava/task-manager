@@ -9,7 +9,7 @@ return new class extends Migration {
 	{
 		Schema::create('settings', function (Blueprint $table) {
 			$table->id();
-			$table->string('cover_photo')->nullable();
+			$table->string('cover_image')->nullable();
 			$table->timestamps();
 		});
 	}
