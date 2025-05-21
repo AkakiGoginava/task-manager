@@ -1,3 +1,10 @@
+@php
+    $profileImgSrc = Auth::user()->profile_picture
+        ? 'storage/' . Auth::user()->profile_picture
+        : 'images/default_profile.png';
+    $coverImgSrc = \App\Models\Settings::first()->cover_photo ?? 'images/default_cover.jpg';
+@endphp
+
 <x-layout>
     <x-slot:title>Your Profile</x-slot:title>
 
@@ -31,52 +38,72 @@
 
             <div class="col-span-full w-max">
                 <div class="mt-2 flex items-center gap-x-3">
-                    <svg class="size-31 text-gray-300" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"
-                        data-slot="icon">
-                        <path fill-rule="evenodd"
-                            d="M18.685 19.097A9.723 9.723 0 0 0 21.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 0 0 3.065 7.097A9.716 9.716 0 0 0 12 21.75a9.716 9.716 0 0 0 6.685-2.653Zm-12.54-1.285A7.486 7.486 0 0 1 12 15a7.486 7.486 0 0 1 5.855 2.812A8.224 8.224 0 0 1 12 20.25a8.224 8.224 0 0 1-5.855-2.438ZM15.75 9a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"
-                            clip-rule="evenodd" />
-                    </svg>
+                    <img class="size-31 text-gray-300" data-default={{ $profileImgSrc }}
+                        src="{{ asset($profileImgSrc) }}">
 
-                    <label for='profile_image'
+                    <label for='profilePicture'
                         class="flex items-center gap-3 py-4.5 px-12 text-blue-500 font-bold border rounded-xl transition hover:text-blue-400 hover:cursor-pointer">
                         <img src="{{ asset('svg/upload.svg') }}" alt="upload icon">
                         UPLOAD PROFILE
                     </label>
 
-                    <input type="file" id="profile_image" name="profile_image" accept="image/*" class="hidden">
+                    <input type="file" id="profilePicture" name="profile_picture" accept="image/*" class="hidden">
 
                     <button type="button"
                         class="font-bold text-gray-600 ml-11 transition hover:text-gray-500 hover:cursor-pointer">
                         DELETE
                     </button>
                 </div>
+
+                @error('profile_picture')
+                    <p class="pl-6 mt-1 text-xs text-red-500">{{ $message }}</p>
+                @enderror
             </div>
 
             <div class="col-span-full w-max">
                 <div class="mt-2 flex items-center gap-x-3">
-                    <svg class="size-31 text-gray-300" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"
-                        data-slot="icon">
-                        <path fill-rule="evenodd"
-                            d="M18.685 19.097A9.723 9.723 0 0 0 21.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 0 0 3.065 7.097A9.716 9.716 0 0 0 12 21.75a9.716 9.716 0 0 0 6.685-2.653Zm-12.54-1.285A7.486 7.486 0 0 1 12 15a7.486 7.486 0 0 1 5.855 2.812A8.224 8.224 0 0 1 12 20.25a8.224 8.224 0 0 1-5.855-2.438ZM15.75 9a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"
-                            clip-rule="evenodd" />
-                    </svg>
-                    <label for="cover_image"
+                    <img class="size-31 text-gray-300 rounded-l-[1rem]" data-default={{ $coverImgSrc }}
+                        src="{{ asset($coverImgSrc) }}">
+
+                    <label for='profileImage'
                         class="flex items-center gap-3 py-4.5 px-12 text-blue-500 font-bold border rounded-xl transition hover:text-blue-400 hover:cursor-pointer">
                         <img src="{{ asset('svg/upload.svg') }}" alt="upload icon">
-                        UPLOAD COVER
+                        UPLOAD PROFILE
                     </label>
 
-                    <input type="file" id="cover_image" name="cover_image" accept="image/*" class="hidden">
+                    <input type="file" id="profileImage" name="profile_image" accept="image/*" class="hidden">
 
                     <button type="button"
                         class="font-bold text-gray-600 ml-11 transition hover:text-gray-500 hover:cursor-pointer">
                         DELETE
                     </button>
                 </div>
+
+                @error('cover_image')
+                    <p class="pl-6 mt-1 text-xs text-red-500">{{ $message }}</p>
+                @enderror
             </div>
 
             <x-forms.submit-btn>CHANGE</x-forms.submit-btn>
         </x-forms.form>
     </section>
 </x-layout>
+
+<script>
+    document.querySelectorAll('input[type="file"]').forEach(imgInput => {
+        const parent = imgInput.closest('div');
+        const preview = parent.querySelector('img');
+
+        imgInput.addEventListener('change', (event) => {
+            const file = event.target.files[0];
+            if (file) {
+                preview.src = URL.createObjectURL(file);
+            }
+        });
+
+        parent.querySelector('button').addEventListener('click', () => {
+            preview.src = `{{ asset('${preview.dataset.default}') }}`;
+            imgInput.value = '';
+        });
+    });
+</script>
