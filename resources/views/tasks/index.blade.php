@@ -104,7 +104,7 @@
                                     Delete
                                 </button>
                             </form>
-                            <a href="{{ route('tasks.edit', $task) }}"
+                            <a href="{{ route('tasks.edit', ['task' => $task, 'return_to' => url()->current()]) }}"
                                 class="underline hover:cursor-pointer hover:text-gray-700">
                                 Edit
                             </a>

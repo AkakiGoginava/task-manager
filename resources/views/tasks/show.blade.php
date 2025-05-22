@@ -6,7 +6,7 @@
             <h1 class="font-bold text-[2rem]">{{ $task['title']['en'] }}</h1>
             <a class="text-blue-500 font-bold px-6 py-3 flex gap-4 items-center 
                 border rounded-xl transition hover:text-blue-400 hover:border-blue-400"
-                href="{{ route('tasks.edit', $task) }}">
+                href="{{ route('tasks.edit', ['task' => $task, 'return_to' => url()->current()]) }}">
                 <img src="{{ asset('svg/edit.svg') }}" alt="edit icon">
                 EDIT TASK</a>
         </header>

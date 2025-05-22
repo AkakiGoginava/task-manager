@@ -11,7 +11,10 @@
 
 <body class="px-10 py-2 w-screen h-screen">
     <main class="flex gap-25 width-full height-full justify-center">
-        <img src="https://placehold.co/700x944" class="size-max rounded-l-[3rem]">
+        <img src="{{ App\Models\Settings::first()
+            ? asset('storage/' . App\Models\Settings::first()->cover_image)
+            : asset('images/default_cover.jpg') }}"
+            class="w-175 h-236 object-cover rounded-l-[3rem]">
 
         <section class="flex flex-col py-3">
             <x-forms.form action="{{ route('login') }}">

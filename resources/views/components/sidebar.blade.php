@@ -1,5 +1,7 @@
 <nav class="flex flex-col items-center h-full w-42 py-4 pl-5">
-    <img class="w-16 h-16 rounded-4xl mb-32" src="https://placehold.co/64x64" alt="profile picture">
+    <img class="size-16 rounded-full mb-32 object-cover flex-shrink-0"
+        src="{{ Auth::user()->profile_image ? asset('storage/' . Auth::user()->profile_image) : asset('images/default_profile.png') }}"
+        alt="profile picture">
 
     <ul class="flex flex-col h-full gap-7 text-lg">
         <li>
@@ -17,7 +19,8 @@
             </a>
         </li>
         <li>
-            <a class="flex items-center gap-2 transition duration-300 hover:text-neutral-500" href="">
+            <a class="flex items-center gap-2 transition duration-300 hover:text-neutral-500"
+                href="{{ route('profile.index') }}">
                 <img src="{{ asset('svg/profileIcon.svg') }}" alt="profile icon">
                 Profile
             </a>

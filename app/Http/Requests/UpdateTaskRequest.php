@@ -20,13 +20,13 @@ class UpdateTaskRequest extends FormRequest
 	public function messages(): array
 	{
 		return [
-			'title.en.regex'                => 'Must contain English letters only.',
-			'description.en.regex'          => 'Must contain English letters only.',
-			'title.ka.regex'                => 'Must contain Georgian letters only.',
-			'description.ka.regex'          => 'Must contain Georgian letters only.',
-			'due_date.after'                => 'Due date must be in the future.',
-			'required'                      => 'Field is required.',
-			'min'                           => 'Must be at least 3 characters long.',
+			'title.en.regex'                   => 'Must contain English letters only.',
+			'description.en.regex'             => 'Must contain English letters only.',
+			'title.ka.regex'                   => 'Must contain Georgian letters only.',
+			'description.ka.regex'             => 'Must contain Georgian letters only.',
+			'due_date.after'                   => 'Due date must be in the future.',
+			'required'                         => 'Field is required.',
+			'min'                              => 'Must be at least 3 characters long.',
 		];
 	}
 }
