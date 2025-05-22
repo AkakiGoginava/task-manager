@@ -1,8 +1,31 @@
 @php
-    $query = request()->query();
-    $currentSort = request('sort');
-    $direction = request('direction');
     $locale = App::getLocale();
+    $query = request()->query();
+
+    $sortIconClass = [
+        'created_at' => 'opacity-70',
+        'due_date' => 'opacity-70',
+    ];
+
+    function nextSortDirection($column, $query, &$sortIconClass)
+    {
+        $currentSort = $query['sort'] ?? null;
+        $direction = $query['direction'] ?? null;
+
+        if ($currentSort === $column && $direction === 'asc') {
+            $sortIconClass[$column] = 'opacity-70 bottom-0';
+            return ['sort' => $column, 'direction' => 'desc'];
+        } elseif ($currentSort === $column && $direction === 'desc') {
+            $sortIconClass[$column] = 'opacity-70 top-0';
+            return ['sort' => null, 'direction' => null];
+        } else {
+            $sortIconClass[$column] = 'opacity-0';
+            return ['sort' => $column, 'direction' => 'asc'];
+        }
+    }
+
+    $createdAtSort = nextSortDirection('created_at', $query, $sortIconClass);
+    $dueDateSort = nextSortDirection('due_date', $query, $sortIconClass);
 @endphp
 
 <x-layout>
@@ -34,13 +57,7 @@
                 <p class="flex-3">{{ __('task/index.description') }}</p>
                 <div class="flex-1 flex items-center">
                     <a class="hover:text-gray-700 hover:cursor-pointer"
-                        href=" {{ route(
-                            'tasks.index',
-                            array_merge($query, [
-                                'sort' => 'created_at',
-                                'direction' => $direction === 'asc' ? 'desc' : 'asc',
-                            ]),
-                        ) }}">
+                        href=" {{ route('tasks.index', array_merge($query, $createdAtSort)) }}">
                         {{ __('task/index.created_at') }}
                     </a>
                     <div class="relative w-4 h-4">
@@ -49,24 +66,14 @@
                             {!! file_get_contents(public_path('svg/sortArrows.svg')) !!}
                         </svg>
 
-                        @if ($currentSort === 'created_at' && $direction === 'asc')
-                            <div class="absolute top-0 left-0 w-full h-1/2 bg-white opacity-100 pointer-events-none">
-                            </div>
-                        @elseif ($currentSort === 'created_at' && $direction === 'desc')
-                            <div class="absolute bottom-0 left-0 w-full h-1/2 bg-white opacity-100 pointer-events-none">
-                            </div>
-                        @endif
+                        <div
+                            class="absolute left-0 w-full h-1/2 bg-white pointer-events-none {{ $sortIconClass['created_at'] }}">
+                        </div>
                     </div>
                 </div>
                 <div class="flex-1 flex items-center">
                     <a class="hover:text-gray-700 hover:cursor-pointer"
-                        href=" {{ route(
-                            'tasks.index',
-                            array_merge($query, [
-                                'sort' => 'due_date',
-                                'direction' => $direction === 'asc' ? 'desc' : 'asc',
-                            ]),
-                        ) }}">
+                        href=" {{ route('tasks.index', array_merge($query, $dueDateSort)) }}">
                         {{ __('task/index.due_date') }}
                     </a>
                     <div class="relative w-4 h-4">
@@ -75,13 +82,10 @@
                             {!! file_get_contents(public_path('svg/sortArrows.svg')) !!}
                         </svg>
 
-                        @if ($currentSort === 'due_date' && $direction === 'asc')
-                            <div class="absolute top-0 left-0 w-full h-1/2 bg-white opacity-100 pointer-events-none">
-                            </div>
-                        @elseif ($currentSort === 'due_date' && $direction === 'desc')
-                            <div class="absolute bottom-0 left-0 w-full h-1/2 bg-white opacity-100 pointer-events-none">
-                            </div>
-                        @endif
+                        <div
+                            class="absolute left-0 w-full h-1/2 bg-white pointer-events-none {{ $sortIconClass['due_date'] }}">
+                        </div>
+
                     </div>
                 </div>
                 <p class="flex-2">{{ __('task/index.actions') }}</p>

@@ -6,14 +6,14 @@
     <ul class="flex flex-col h-full gap-7 text-lg">
         <li>
             <a class="flex items-center gap-2 transition duration-300 hover:text-neutral-500"
-                href="{{ route('tasks.index') }}">
+                href="{{ route('tasks.index', ['sort' => request()->query('sort'), 'direction' => request()->query('direction')]) }}">
                 <img src="{{ asset('svg/tasksIcon.svg') }}" alt="tasks icon">
                 {{ __('sidebar.my_tasks') }}
             </a>
         </li>
         <li>
             <a class="flex items-center gap-2 transition duration-300 hover:text-neutral-500"
-                href=" {{ route('tasks.index', ['filter' => 'due_tasks']) }}">
+                href="{{ route('tasks.index', array_merge(['filter' => 'due_tasks'], request()->query())) }}">
                 <img src="{{ asset('svg/hourglass.svg') }}" alt="hourglass icon">
                 {{ __('sidebar.due_tasks') }}
             </a>
