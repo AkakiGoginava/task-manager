@@ -5,22 +5,20 @@
 
 <div>
     <div @class([
-        'w-full h-17 px-3 py-2 relative border border-white rounded-xl content-center focus-within:border-blue-600 peer-invalid:border-red-500',
+        'w-full h-17 px-3 py-2 relative border border-white rounded-xl content-center focus-within:border-blue-600',
         'h-17' => $type !== 'textarea',
         'h-34' => $type === 'textarea',
     ])>
         @if ($type !== 'textarea')
             <input type="{{ $type }}" name="{{ $name }}" value="{{ $value }}"
                 placeholder="{{ $placeholder }}" {!! $attributes->merge([
-                    'class' => 'peer absolute top-6 w-full bg-transparent text-sm px-3 py-2 
-                                                transition duration-300 placeholder-transparent text-gray-800 
-                                                focus:outline-none focus:placeholder-slate-400',
+                    'class' => 'form-input peer absolute top-6 w-full bg-transparent text-sm px-3 py-2 transition duration-300 placeholder-transparent 
+                                    text-gray-800 focus:outline-none focus:placeholder-slate-400',
                 ]) !!} />
         @else
             <textarea name="{{ $name }}" rows="4" placeholder="{{ $placeholder }}" {!! $attributes->merge([
-                'class' => 'resize-none peer absolute top-6 w-full bg-transparent text-sm px-3 py-2 
-                                        transition duration-300 placeholder-transparent text-gray-800 
-                                        focus:outline-none focus:placeholder-slate-400',
+                'class' => 'form-input resize-none peer absolute top-6 w-full bg-transparent text-sm px-3 py-2 transition duration-300 placeholder-transparent 
+                            text-gray-800 focus:outline-none focus:placeholder-slate-400',
             ]) !!}>{{ $value }}</textarea>
         @endif
 
