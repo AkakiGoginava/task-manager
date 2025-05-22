@@ -2,6 +2,7 @@
     $query = request()->query();
     $currentSort = request('sort');
     $direction = request('direction');
+    $locale = App::getLocale();
 @endphp
 
 <x-layout>
@@ -9,7 +10,7 @@
 
     <section>
         <header class="flex gap-4 p-10">
-            <h1 class="font-bold text-[2rem] mr-auto">YOUR TASKS</h1>
+            <h1 class="font-bold text-[2rem] mr-auto">{{ __('task/index.your_tasks') }}</h1>
             <form action="{{ route('tasks.destroyOverdue') }}?{{ http_build_query(request()->query()) }}" method="POST"
                 class="flex justify-center">
                 @csrf
@@ -17,20 +18,20 @@
                 <button
                     class="text-blue-500 font-bold py-3 px-6 border rounded-xl transition
                         hover:border-blue-400 hover:text-blue-400 hover:cursor-pointer">
-                    DELETE OLD TASKS
+                    {{ __('task/index.delete_old_tasks') }}
                 </button>
             </form>
             <a href="{{ route('tasks.create') }}"
                 class="flex justify-center gap-3 items-center text-white font-bold py-3 px-6 
                         rounded-xl transition bg-blue-500 hover:bg-blue-400">
                 <img src="{{ asset('svg/plus-circle.svg') }}" alt="plus icon">
-                ADD TASK
+                {{ __('task/index.add_task') }}
             </a>
         </header>
         <main>
             <div class="flex w-full gap-4 border-b border-gray-200 px-10 py-7">
-                <p class="flex-2">Task name</p>
-                <p class="flex-3">Description</p>
+                <p class="flex-2">{{ __('task/index.task_name') }}</p>
+                <p class="flex-3">{{ __('task/index.description') }}</p>
                 <div class="flex-1 flex items-center">
                     <a class="hover:text-gray-700 hover:cursor-pointer"
                         href=" {{ route(
@@ -40,7 +41,7 @@
                                 'direction' => $direction === 'asc' ? 'desc' : 'asc',
                             ]),
                         ) }}">
-                        Created at
+                        {{ __('task/index.created_at') }}
                     </a>
                     <div class="relative w-4 h-4">
                         <svg class="absolute top-0.5 left-2 w-full h-full text-gray-400 dark:text-gray-300"
@@ -66,7 +67,7 @@
                                 'direction' => $direction === 'asc' ? 'desc' : 'asc',
                             ]),
                         ) }}">
-                        Due Date
+                        {{ __('task/index.due_date') }}
                     </a>
                     <div class="relative w-4 h-4">
                         <svg class="absolute top-0.5 left-2 w-full h-full text-gray-400 dark:text-gray-300"
@@ -83,14 +84,14 @@
                         @endif
                     </div>
                 </div>
-                <p class="flex-2">Actions</p>
+                <p class="flex-2">{{ __('task/index.actions') }}</p>
             </div>
 
             <div>
                 @foreach ($tasks as $task)
                     <div class="flex w-385 gap-4 text-gray-500 px-10 py-5">
-                        <p class="flex-2 overflow-hidden whitespace-nowrap">{{ $task['title']['en'] }}</p>
-                        <p class="flex-3 overflow-hidden whitespace-nowrap">{{ $task['description']['en'] }}</p>
+                        <p class="flex-2 overflow-hidden whitespace-nowrap">{{ $task['title'][$locale] }}</p>
+                        <p class="flex-3 overflow-hidden whitespace-nowrap">{{ $task['description'][$locale] }}</p>
                         <p class="flex-1">{{ $task['created_at']->format('d/m/Y') }}</p>
                         <p class="flex-1 {{ $task['due_date'] <= now() ? 'text-red-500' : '' }}">
                             {{ $task['due_date']->format('d/m/Y') }}</p>
@@ -101,16 +102,16 @@
                                 @csrf
                                 @method('DELETE')
                                 <button class="underline hover:cursor-pointer hover:text-gray-700">
-                                    Delete
+                                    {{ __('task/index.delete') }}
                                 </button>
                             </form>
                             <a href="{{ route('tasks.edit', ['task' => $task, 'return_to' => url()->current()]) }}"
                                 class="underline hover:cursor-pointer hover:text-gray-700">
-                                Edit
+                                {{ __('task/index.edit') }}
                             </a>
                             <a href="{{ route('tasks.show', $task->id) }}"
                                 class="underline hover:cursor-pointer hover:text-gray-700">
-                                Show
+                                {{ __('task/index.show') }}
                             </a>
                         </div>
                     </div>

@@ -15,30 +15,30 @@
             @method('PUT')
 
             <x-slot:header>
-                <h1 class="text-center">PROFILE</h1>
+                <h1 class="text-center">{{ __('profile/index.profile') }}</h1>
             </x-slot:header>
 
             <div class="flex flex-col text-gray-500 pl-6">
-                <label class="text-xs">E-mail</label>
+                <label class="text-xs">{{ __('profile/index.email') }}</label>
                 <input type="text" value="{{ $user['email'] }}" disabled>
             </div>
 
-            <h2 class="text-center">CHANGE PASSWORD</h2>
+            <h2 class="text-center">{{ __('profile/index.change_password') }}</h2>
 
-            <x-forms.input-field type='password' name='current_password' placeholder=''>
-                Current Password
+            <x-forms.input-field type='password' name='current_password' :placeholder="__('profile/index.current_password_placeholder')">
+                {{ __('profile/index.current_password_label') }}
             </x-forms.input-field>
 
-            <x-forms.input-field type='password' name='password' placeholder=''>
-                New Password
+            <x-forms.input-field type='password' name='password' :placeholder="__('profile/index.new_password_placeholder')">
+                {{ __('profile/index.new_password_label') }}
             </x-forms.input-field>
 
-            <x-forms.input-field type='password' name='password_confirmation' placeholder=''>
-                Retype New Password
+            <x-forms.input-field type='password' name='password_confirmation' :placeholder="__('profile/index.retype_password_placeholer')">
+                {{ __('profile/index.retype_password_label') }}
             </x-forms.input-field>
 
 
-            <h2 class="text-center">CHANGE PHOTOS</h2>
+            <h2 class="text-center">{{ __('profile/index.change_photos') }}</h2>
 
             <div class="col-span-full w-max">
                 <div class="mt-2 flex items-center gap-x-3">
@@ -48,14 +48,14 @@
                     <label for='profileImage'
                         class="flex items-center gap-3 py-4.5 px-12 text-blue-500 font-bold border rounded-xl transition hover:text-blue-400 hover:cursor-pointer">
                         <img src="{{ asset('svg/upload.svg') }}" alt="upload icon">
-                        UPLOAD PROFILE
+                        {{ __('profile/index.upload_profile') }}
                     </label>
 
                     <input type="file" id="profileImage" name="profile_image" accept="image/*" class="hidden">
 
                     <button type="button"
                         class="font-bold text-gray-600 ml-11 transition hover:text-gray-500 hover:cursor-pointer">
-                        DELETE
+                        {{ __('profile/index.delete') }}
                     </button>
                 </div>
 
@@ -72,14 +72,14 @@
                     <label for='coverImage'
                         class="flex items-center gap-3 py-4.5 px-12 text-blue-500 font-bold border rounded-xl transition hover:text-blue-400 hover:cursor-pointer">
                         <img src="{{ asset('svg/upload.svg') }}" alt="upload icon">
-                        UPLOAD COVER
+                        {{ __('profile/index.upload_cover') }}
                     </label>
 
                     <input type="file" id="coverImage" name="cover_image" accept="image/*" class="hidden">
 
                     <button type="button"
                         class="font-bold text-gray-600 ml-11 transition hover:text-gray-500 hover:cursor-pointer">
-                        DELETE
+                        {{ __('profile/index.delete') }}
                     </button>
                 </div>
 
@@ -88,7 +88,7 @@
                 @enderror
             </div>
 
-            <x-forms.submit-btn>CHANGE</x-forms.submit-btn>
+            <x-forms.submit-btn>{{ __('profile/index.change') }}</x-forms.submit-btn>
         </x-forms.form>
     </section>
 </x-layout>

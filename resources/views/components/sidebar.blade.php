@@ -8,21 +8,21 @@
             <a class="flex items-center gap-2 transition duration-300 hover:text-neutral-500"
                 href="{{ route('tasks.index') }}">
                 <img src="{{ asset('svg/tasksIcon.svg') }}" alt="tasks icon">
-                My tasks
+                {{ __('sidebar.my_tasks') }}
             </a>
         </li>
         <li>
             <a class="flex items-center gap-2 transition duration-300 hover:text-neutral-500"
                 href=" {{ route('tasks.index', ['filter' => 'due_tasks']) }}">
                 <img src="{{ asset('svg/hourglass.svg') }}" alt="hourglass icon">
-                Due tasks
+                {{ __('sidebar.due_tasks') }}
             </a>
         </li>
         <li>
             <a class="flex items-center gap-2 transition duration-300 hover:text-neutral-500"
                 href="{{ route('profile.index') }}">
                 <img src="{{ asset('svg/profileIcon.svg') }}" alt="profile icon">
-                Profile
+                {{ __('sidebar.profile') }}
             </a>
         </li>
         <li class="mt-auto">
@@ -31,7 +31,7 @@
                 <button
                     class="flex items-center gap-2 transition duration-300 hover:text-neutral-500 hover:cursor-pointer">
                     <img src="{{ asset('svg/logoutIcon.svg') }}" alt="logout icon">
-                    Log out
+                    {{ __('sidebar.log_out') }}
                 </button>
             </form>
         </li>

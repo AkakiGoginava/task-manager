@@ -8,20 +8,20 @@
                 border rounded-xl transition hover:text-blue-400 hover:border-blue-400"
                 href="{{ route('tasks.edit', ['task' => $task, 'return_to' => url()->current()]) }}">
                 <img src="{{ asset('svg/edit.svg') }}" alt="edit icon">
-                EDIT TASK</a>
+                {{ __('task/show.edit_task') }}</a>
         </header>
         <main>
             <div class="mb-10 pr-50 h-125 overflow-y-scroll">
-                <h6 class="text-gray-700 mb-4 text-lg">Description</h6>
+                <h6 class="text-gray-700 mb-4 text-lg">{{ __('task/show.desciption') }}</h6>
                 <p>{{ $task['description']['en'] }}</p>
             </div>
             <div class="flex gap-20">
                 <div>
-                    <h6 class="text-gray-700">Create Date</h6>
+                    <h6 class="text-gray-700">{{ __('task/show.create_date') }}</h6>
                     <p class="text-lg">{{ $task['created_at']->format('d/m/y') }}</p>
                 </div>
                 <div>
-                    <h6 class="text-gray-700">Due Date</h6>
+                    <h6 class="text-gray-700">{{ __('task/show.due_date') }}</h6>
                     <p class="text-lg">{{ $task['due_date']->format('d/m/y') }}</p>
                 </div>
             </div>
