@@ -15,10 +15,10 @@
     <main class="size-full inline-block p-10">
         {{ $slot }}
     </main>
-
+    <p>{{ Session::get('locale') }}</p>
     <footer class="flex justify-center gap-4 absolute bottom-10 right-28">
-        <p>English</p>
-        <p>ქართული</p>
+        <a href="{{ route('lang.switch', 'en') }}">English</a>
+        <a href="{{ route('lang.switch', 'ka') }}">ქართული</a>
     </footer>
 </body>
 
