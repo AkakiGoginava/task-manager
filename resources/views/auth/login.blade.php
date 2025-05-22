@@ -9,8 +9,8 @@
     <title>Log In</title>
 </head>
 
-<body class="px-10 py-2 w-screen h-screen">
-    <main class="flex gap-25 width-full height-full justify-center">
+<body class="h-screen py-2">
+    <main class="flex mx-auto px-10 gap-25 w-360 height-full">
         <img src="{{ App\Models\Settings::first()
             ? asset('storage/' . App\Models\Settings::first()->cover_image)
             : asset('images/default_cover.jpg') }}"

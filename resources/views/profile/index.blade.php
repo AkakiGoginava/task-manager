@@ -10,7 +10,7 @@
 <x-layout>
     <x-slot:title>Your Profile</x-slot:title>
 
-    <section class="flex-col items-center mr-40">
+    <section class="flex-col items-center mr-22">
         <x-forms.form class="min-w-0 mx-auto" enctype="multipart/form-data">
             @method('PUT')
 

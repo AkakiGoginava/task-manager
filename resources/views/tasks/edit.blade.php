@@ -1,8 +1,8 @@
 <x-layout>
     <x-slot:title>Edit Task</x-slot:title>
 
-    <section class="flex-col items-center mr-40">
-        <div class="flex gap-2 w-full pl-70"> <img src="{{ asset('svg/backArrow.svg') }}" alt="back icon">
+    <section class="flex-col items-center mr-22 mt-15">
+        <div class="flex gap-2 w-full pt pl-40"> <img src="{{ asset('svg/backArrow.svg') }}" alt="back icon">
             <a href="{{ request('return_to', route('tasks.index')) }}"
                 class="transition hover:text-gray-700">{{ __('task/form.back') }}</a>
         </div>

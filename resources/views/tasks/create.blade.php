@@ -1,7 +1,7 @@
 <x-layout>
     <x-slot:title>Create new task</x-slot:title>
 
-    <section class="flex justify-center mr-40">
+    <section class="flex justify-center mr-22 mt-15">
         <div class="flex-none">
             <x-forms.form action="{{ route('tasks.store') }}">
                 <x-slot:header>

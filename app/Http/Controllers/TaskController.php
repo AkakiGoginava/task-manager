@@ -51,7 +51,7 @@ class TaskController extends Controller
 			'due_date'    => Carbon::createFromFormat('d/m/Y', $attributes['due_date'])->format('Y-m-d'),
 		]);
 
-		return redirect()->route('tasks.index');
+		return redirect()->route('tasks.index')->with('success', __('successMsg.add_task'));
 	}
 
 	public function show(Task $task): View
@@ -82,7 +82,7 @@ class TaskController extends Controller
 			'due_date'    => Carbon::createFromFormat('d/m/Y', $attributes['due_date'])->format('Y-m-d'),
 		]);
 
-		return redirect()->route('tasks.show', $task);
+		return redirect()->route('tasks.show', $task)->with('success', __('successMsg.edit_task'));
 	}
 
 	public function destroy(Task $task): RedirectResponse

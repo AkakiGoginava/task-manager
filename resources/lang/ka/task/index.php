@@ -6,7 +6,7 @@ return [
 	'add_task'         => 'შექმენი ახალი',
 	'task_name'        => 'დავალების სახელი',
 	'description'      => 'აღწერა',
-	'created_at'       => 'შექმნის თარიღი',
+	'created_at'       => 'შეიქმნა',
 	'due_date'         => 'ვადა',
 	'actions'          => 'მოქმედებები',
 	'delete'           => 'წაშლა',
