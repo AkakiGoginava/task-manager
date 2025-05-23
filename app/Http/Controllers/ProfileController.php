@@ -54,6 +54,6 @@ class ProfileController extends Controller
 
 		$user->save();
 
-		return redirect()->route('tasks.index');
+		return redirect()->route('tasks.index')->with('success', __('successMsg.edit_profile'));
 	}
 }

@@ -15,8 +15,8 @@ class AuthController extends Controller
 
 		if (!Auth::attempt($attributes)) {
 			throw ValidationException::withMessages([
-				'email'    => 'Incorrect email or password',
-				'password' => 'Incorrect email or password',
+				'email'    => __('validation.login_failed'),
+				'password' => __('validation.login_failed'),
 			]);
 		}
 

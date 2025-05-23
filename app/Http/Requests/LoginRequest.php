@@ -13,14 +13,4 @@ class LoginRequest extends FormRequest
 			'password' => ['required', 'min:4'],
 		];
 	}
-
-	public function messages(): array
-	{
-		return [
-			'email.required'    => 'Enter your email address',
-			'email.email'       => 'Enter a valid email address',
-			'password.required' => 'Enter your password',
-			'password.min'      => 'Password must be at least 4 characters long',
-		];
-	}
 }
