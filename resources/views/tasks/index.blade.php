@@ -1,5 +1,5 @@
 @php
-    $locale = App::getLocale();
+    $locale = App::getLocale() ?? 'en';
     $query = request()->query();
 
     $sortIconClass = [
