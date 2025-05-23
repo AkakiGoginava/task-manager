@@ -1,61 +1,184 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<h1>Task Manager</h1>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+---
 
-## About Laravel
+Task Manager App helps people to store and organise their tasks.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+#
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Table of Contents
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+-   [Prerequisites](#prerequisites)
+-   [Tech Stack](#tech-stack)
+-   [Frontend Dependencies](#frontend-dependencies)
+-   [Getting Started](#getting-started)
+-   [Migrations](#migration)
+-   [Seeding](#seeding)
+-   [Registering User](#registering-user)
+-   [Development](#development)
+-   [Project Structure](#project-structure)
 
-## Learning Laravel
+#
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Prerequisites
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+-   <img src="readme/assets/php.svg" width="35" style="position: relative; top: 4px" /> \*PHP@8.3.21 and up
+-   <img src="readme/assets/mysql.png" width="35" style="position: relative; top: 4px" /> MYSQL@8 and up
+-   <img src="readme/assets/npm.png" width="35" style="position: relative; top: 4px" /> npm@9.2 and up
+-   <img src="readme/assets/composer.png" width="35" style="position: relative; top: 6px" /> composer@2.8.8 and up
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+#
 
-## Laravel Sponsors
+### Tech Stack
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+-   <img src="readme/assets/laravel.png" height="18" style="position: relative; top: 4px" /> [Laravel@12.x](https://laravel.com/docs/12.x) - back-end framework
+-   <img src="readme/assets/mysql.png" height="18" style="position: relative; top: 4px" /> [MySQL@8](https://www.mysql.com/) - relational database
 
-### Premium Partners
+#
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+### Frontend Dependencies
 
-## Contributing
+-   This project uses [Flatpickr](https://flatpickr.js.org/) for date picking functionality.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+#
 
-## Code of Conduct
+### Getting Started
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+1\. First of all you need to clone repository from github:
 
-## Security Vulnerabilities
+```sh
+git clone https://github.com/RedberryInternship/task-manager-akaki-goginava.git
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+2\. Next step requires you to run _composer install_ in order to install all the dependencies.
 
-## License
+```sh
+composer install
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+3\. After you have installed all the PHP dependencies, it's time to install all the JS dependencies:
+
+```sh
+npm install
+```
+
+and also:
+
+```sh
+npm run dev
+```
+
+4\. Now we need to set our env file. Go to the root of your project and execute this command.
+
+```sh
+cp .env.example .env
+```
+
+And now you should provide **.env** file all the necessary environment variables:
+
+#
+
+**MYSQL:**
+
+> DB_CONNECTION=mysql
+
+> DB_HOST=127.0.0.1
+
+> DB_PORT=3306
+
+> DB_DATABASE=**\***
+
+> DB_USERNAME=**\***
+
+> DB_PASSWORD=**\***
+
+after setting up **.env** file, execute:
+
+```sh
+php artisan config:cache
+```
+
+in order to cache environment variables.
+
+##### Now, you should be good to go!
+
+#
+
+### Migration
+
+to migrate database execute:
+
+```sh
+php artisan migrate
+```
+
+#
+
+### Seeding
+
+to seed database execute:
+
+```sh
+php artisan db:seed
+```
+
+#
+
+### Registering User
+
+to register a new user execute:
+
+```sh
+php artisan app:register-user
+```
+
+#
+
+### Development
+
+You can run Laravel's built-in development server by executing:
+
+```sh
+  php artisan serve
+```
+
+Run Vite for frontend assets
+
+```sh
+  npm run dev
+```
+
+#
+
+### Project Structure
+
+```bash
+├─── app
+│   ├─── Console
+│   ├─── Http
+│   ├─── Models
+│   ├─── Policies
+│   ├─── Providers
+├─── bootstrap
+├─── config
+├─── database
+├─── public
+├─── resources
+├─── routes
+├─── storage
+├─── tests
+- .editorconfig
+- .env
+- .php-cs-fixer.php
+- artisan
+- composer.json
+- composer.lock
+- package-lock.json
+- package.json
+- phpunit.xml
+- vite.config.js
+```
+
+Project structure is standard for a Laravel project.
+
+[Database Design Diagram](readme/assets/database-diagram.png)
