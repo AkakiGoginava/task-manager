@@ -52,6 +52,7 @@
                     </label>
 
                     <input type="file" id="profileImage" name="profile_image" accept="image/*" class="hidden">
+                    <input type="hidden" name="update_profile_image" value="0" class="update-image">
 
                     <button type="button"
                         class="font-bold text-gray-600 ml-11 transition hover:text-gray-500 hover:cursor-pointer">
@@ -76,6 +77,7 @@
                     </label>
 
                     <input type="file" id="coverImage" name="cover_image" accept="image/*" class="hidden">
+                    <input type="hidden" name="update_cover_image" value="0" class="update-image">
 
                     <button type="button"
                         class="font-bold text-gray-600 ml-11 transition hover:text-gray-500 hover:cursor-pointer">
@@ -97,17 +99,22 @@
     document.querySelectorAll('input[type="file"]').forEach(imgInput => {
         const parent = imgInput.closest('div');
         const preview = parent.querySelector('img');
+        const updateImage = parent.querySelector('.update-image');
 
         imgInput.addEventListener('change', (event) => {
             const file = event.target.files[0];
             if (file) {
                 preview.src = URL.createObjectURL(file);
             }
+
+            updateImage.value = 1;
         });
 
         parent.querySelector('button').addEventListener('click', () => {
-            preview.src = `{{ asset('${preview.dataset.default}') }}`;
+            preview.src = `{{ asset('images/default_profile.png') }}`;
             imgInput.value = '';
+
+            updateImage.value = 1;
         });
     });
 </script>
