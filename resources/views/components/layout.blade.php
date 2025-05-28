@@ -28,21 +28,21 @@
         </script>
     @endif
 
-    <main class="flex w-360 h-full mx-auto">
+    <main class="flex w-360 h-full mx-auto relative">
         <x-sidebar />
 
         <section class="h-full w-295 inline-block relative">
             {{ $slot }}
 
-            <footer class="flex justify-center gap-4 absolute bottom-10 right-10">
-                <footer class="flex justify-center gap-4">
-                    <a href="{{ route('lang.switch', 'en') }}"
-                        class="{{ (App::getLocale() ?? 'en') === 'en' ? '' : 'text-gray-500' }}">English</a>
-                    <a href="{{ route('lang.switch', 'ka') }}"
-                        class="{{ (App::getLocale() ?? 'en') === 'ka' ? '' : 'text-gray-500' }}">ქართული</a>
-                </footer>
-            </footer>
         </section>
+        <footer class="flex justify-center gap-4 absolute bottom-10 right-0">
+            <footer class="flex justify-center gap-4">
+                <a href="{{ route('lang.switch', 'en') }}"
+                    class="{{ (App::getLocale() ?? 'en') === 'en' ? '' : 'text-gray-500' }}">English</a>
+                <a href="{{ route('lang.switch', 'ka') }}"
+                    class="{{ (App::getLocale() ?? 'en') === 'ka' ? '' : 'text-gray-500' }}">ქართული</a>
+            </footer>
+        </footer>
     </main>
 </body>
 

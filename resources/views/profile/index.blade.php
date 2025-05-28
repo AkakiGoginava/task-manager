@@ -18,9 +18,10 @@
                 <h1 class="text-center">{{ __('profile/index.profile') }}</h1>
             </x-slot:header>
 
-            <div class="flex flex-col text-gray-500 pl-6">
+            <div class="flex flex-col text-gray-500 gap-2">
                 <label class="text-xs">{{ __('profile/index.email') }}</label>
-                <input type="text" value="{{ $user['email'] }}" disabled>
+                <input type="text" value="{{ $user['email'] }}" disabled
+                    class="bg-gray-200 w-full px-6 py-5 rounded-xl ">
             </div>
 
             <h2 class="text-center">{{ __('profile/index.change_password') }}</h2>
