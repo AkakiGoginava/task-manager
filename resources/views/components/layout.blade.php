@@ -37,9 +37,9 @@
             <footer class="flex justify-center gap-4 absolute bottom-10 right-10">
                 <footer class="flex justify-center gap-4">
                     <a href="{{ route('lang.switch', 'en') }}"
-                        class="{{ App::getLocale() ?? 'en' === 'en' ? '' : 'text-gray-500' }}">English</a>
+                        class="{{ (App::getLocale() ?? 'en') === 'en' ? '' : 'text-gray-500' }}">English</a>
                     <a href="{{ route('lang.switch', 'ka') }}"
-                        class="{{ App::getLocale() ?? 'en' === 'ka' ? '' : 'text-gray-500' }}">ქართული</a>
+                        class="{{ (App::getLocale() ?? 'en') === 'ka' ? '' : 'text-gray-500' }}">ქართული</a>
                 </footer>
             </footer>
         </section>
