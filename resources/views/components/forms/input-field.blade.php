@@ -5,7 +5,7 @@
 
 <div>
     <div @class([
-        'w-full h-17 px-3 py-2 relative border border-white rounded-xl content-center focus-within:border-blue-400',
+        'w-full h-17 px-3 py-2 relative border border-white rounded-xl bg-gray-200 content-center focus-within:border-blue-400',
         'h-17' => $type !== 'textarea',
         'h-34' => $type === 'textarea',
     ])>
