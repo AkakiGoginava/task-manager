@@ -14,11 +14,11 @@ class TaskFactory extends Factory
 		return [
 			'title' => [
 				'en' => fake()->word(),
-				'ka' => fake()->word(),
+				'ka' => fakeGeorgianText(30),
 			],
 			'description' => [
 				'en' => fake()->text(300),
-				'ka' => fake()->text(300),
+				'ka' => fakeGeorgianText(300),
 			],
 			'created_at'  => $created_at,
 			'due_date'    => fake()->dateTimeBetween($created_at, '+6 months'),

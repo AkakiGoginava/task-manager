@@ -44,5 +44,8 @@ return [
 		'description.ka'  => 'ქართული აღწერ',
 	],
 
-	'login_failed' => 'მეილი ან პაროლი არასწორია.',
+	'login_failed'                   => 'მეილი ან პაროლი არასწორია.',
+	'current_password_required'      => 'პაროლის ველი სავალდებულოა.',
+	'new_password_required'          => 'ახალი პაროლის ველი სავალდებულოა.',
+	'password_confirmation_required' => 'ახალი პაროლის განმეორებითი ველი სავალდებულოა.',
 ];
