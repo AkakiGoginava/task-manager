@@ -177,5 +177,8 @@ return [
 		'description.ka'  => 'English description',
 	],
 
-	'login_failed' => 'Incorrect email or password',
+	'login_failed'                   => 'Incorrect email or password',
+	'current_password_required'      => 'The current password field is required.',
+	'new_password_required'          => 'The new password field is required.',
+	'password_confirmation_required' => 'The password confiramtion field is required.',
 ];
