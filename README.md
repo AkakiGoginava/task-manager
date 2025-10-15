@@ -22,17 +22,17 @@ Task Manager App helps people to store and organise their tasks.
 
 ### Prerequisites
 
--   <img src="readme/assets/php.svg" width="35" style="position: relative; top: 4px" /> \*PHP@8.3.21 and up
--   <img src="readme/assets/mysql.png" width="35" style="position: relative; top: 4px" /> MYSQL@8 and up
--   <img src="readme/assets/npm.png" width="35" style="position: relative; top: 4px" /> npm@9.2 and up
--   <img src="readme/assets/composer.png" width="35" style="position: relative; top: 6px" /> composer@2.8.8 and up
+-   PHP@8.3.21 and up
+-   MYSQL@8 and up
+-   npm@9.2 and up
+-   composer@2.8.8 and up
 
 #
 
 ### Tech Stack
 
--   <img src="readme/assets/laravel.png" height="18" style="position: relative; top: 4px" /> [Laravel@12.x](https://laravel.com/docs/12.x) - back-end framework
--   <img src="readme/assets/mysql.png" height="18" style="position: relative; top: 4px" /> [MySQL@8](https://www.mysql.com/) - relational database
+-   [Laravel@12.x](https://laravel.com/docs/12.x) - back-end framework
+-   [MySQL@8](https://www.mysql.com/) - relational database
 
 #
 
@@ -65,6 +65,10 @@ npm install
 and also:
 
 ```sh
+npm run build
+```
+
+```sh
 npm run dev
 ```
 
@@ -72,6 +76,12 @@ npm run dev
 
 ```sh
 cp .env.example .env
+```
+
+Generate app key:
+
+```sh
+php artisan key:generate
 ```
 
 And now you should provide **.env** file all the necessary environment variables:
