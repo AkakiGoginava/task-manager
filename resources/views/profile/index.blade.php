@@ -4,7 +4,7 @@
         : 'images/default_profile.png';
     $coverImgSrc = App\Models\Settings::first()
         ? 'storage/' . App\Models\Settings::first()->cover_image
-        : 'images/default_cover.jpg';
+        : 'images/default_cover.png';
 @endphp
 
 <x-layout>
@@ -43,7 +43,7 @@
 
             <div class="col-span-full w-max">
                 <div class="mt-2 flex items-center gap-x-3">
-                    <img class="size-31 text-gray-300 rounded-full" data-default={{ $profileImgSrc }}
+                    <img name="profile" class="size-31 text-gray-300 rounded-full" data-default={{ $profileImgSrc }}
                         src="{{ asset($profileImgSrc) }}">
 
                     <label for='profileImage'
@@ -68,7 +68,7 @@
 
             <div class="col-span-full w-max">
                 <div class="mt-2 flex items-center gap-x-3">
-                    <img class="size-31 text-gray-300 rounded-l-[1rem]" data-default={{ $coverImgSrc }}
+                    <img name="cover" class="size-31 text-gray-300 rounded-l-[1rem]" data-default={{ $coverImgSrc }}
                         src="{{ asset($coverImgSrc) }}">
 
                     <label for='coverImage'
@@ -112,7 +112,9 @@
         });
 
         parent.querySelector('button').addEventListener('click', () => {
-            preview.src = `{{ asset('images/default_profile.png') }}`;
+            const previewType = preview.name;
+
+            preview.src = `{{ asset('images/default_${previewType}.png') }}`;
             imgInput.value = '';
 
             updateImage.value = 1;
