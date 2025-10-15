@@ -1,4 +1,4 @@
-<nav class="flex flex-col items-center w-42 h-236 pt-6 pb-8 px-5.5 bg-gray-300 rounded-xl">
+<nav class="flex flex-col items-center min-w-42 h-full pt-6 pb-8 px-5.5 bg-gray-300 rounded-xl">
     <img class="size-16 rounded-full mb-32 object-cover flex-shrink-0"
         src="{{ Auth::user()->profile_image ? asset('storage/' . Auth::user()->profile_image) : asset('images/default_profile.png') }}"
         alt="profile picture">
@@ -25,7 +25,7 @@
                 {{ __('sidebar.profile') }}
             </a>
         </li>
-        <li class="mt-auto">
+        <li class="mt-auto mx-auto">
             <form action="{{ route('logout') }}" method="POST">
                 @csrf
                 <button

@@ -28,7 +28,7 @@
         </script>
     @endif
 
-    <main class="flex w-360 h-full mx-auto relative">
+    <main class="flex w-360 h-full mx-auto relative py-5 px-2">
         <x-sidebar />
 
         <section class="h-full w-295 inline-block relative">
