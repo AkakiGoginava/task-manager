@@ -13,7 +13,7 @@
     <main class="flex mx-auto px-10 gap-25 w-360 height-full">
         <img src="{{ App\Models\Settings::first()
             ? asset('storage/' . App\Models\Settings::first()->cover_image)
-            : asset('images/default_cover.jpg') }}"
+            : asset('images/default_cover.png') }}"
             class="w-175 h-236 object-cover rounded-l-[3rem]">
 
         <section class="flex flex-col py-3">
